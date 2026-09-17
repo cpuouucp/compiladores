@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar Analisador TONTO",
+            "type": "shell",
+            "command": "flex lexer.l && g++ lex.yy.c -o analisador_tonto",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Executar Teste TONTO",
+            "type": "shell",
+            "command": "./analisador_tonto exemplo.tonto",
+            "dependsOn": "Compilar Analisador TONTO",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}

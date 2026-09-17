@@ -1,0 +1,19 @@
+package Universidade;
+
+import Engenharia;
+
+@kind
+class Person {
+    prop name: string;
+    prop birth: date;
+}
+
+mixin Concluintes_2026
+
+material hasParent (Student <>-- Person) redefines subsets
+
+aluno01 aluno02
+
+/* Erros intencionais para testar o analisador */
+class C4sa { }
+#

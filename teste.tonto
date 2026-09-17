@@ -1,0 +1,48 @@
+// ==========================================
+// ONTOLOGIA DE EXEMPLO: ECOSSISTEMA DE SAÚDE
+// ==========================================
+
+package SistemaSaude;
+
+import RegistroNacional;
+
+datatype EnderecoDataType {
+    logradouro: string;
+    cep: number;
+}
+
+enum StatusAtendimento {
+    AGUARDANDO,
+    EM_CONSULTA,
+    FINALIZADO
+}
+
+kind Pessoa {
+    nome: string;
+    dataNascimento: date;
+}
+
+// Testando herança estrutural (specializes)
+subkind Paciente specializes Pessoa {
+    cartaoSUS: string;
+    historico: EnderecoDataType;
+}
+
+@role
+class Medico specializes Pessoa {
+    crm: string;
+    especialidade: string;
+}
+
+/* 
+   Definição da relação de atendimento entre Médico e Paciente
+   Utiliza símbolos compostos para a associação ontológica
+*/
+material realizaAtendimento (Medico <>-- Paciente) redefines subsets
+
+instanciaPaciente01 instanciaMedico2026
+
+// Seção proposital para capturar erros léxicos mistos
+class Hospital_Erro99 { }
+patient_invalid_name
+@
